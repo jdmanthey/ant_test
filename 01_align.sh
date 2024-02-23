@@ -58,12 +58,6 @@ rm ${workdir}/01_bam_files/${basename_array}_cleaned_sorted_rg.bam
 # index the final bam file
 samtools index ${workdir}/01_bam_files/${basename_array}_final.bam
 
-source activate bcftools
-
-# run bcftools to genotype
-bcftools mpileup --skip-indels -C 0 -d 100 --threads 8 -f ${refgenome} ${workdir}/01_bam_files/${basename_array}_final.bam | bcftools call -m -o ${workdir}/02_vcf/${basename_array}.vcf
-
-
 
 
 
