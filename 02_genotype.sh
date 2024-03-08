@@ -34,3 +34,12 @@ bgzip ${workdir}/03_vcf/${basename_array}.vcf
 
 #tabix
 tabix ${workdir}/03_vcf/${basename_array}.vcf.gz
+
+# filter individual vcf files
+bcftools view -i 'MIN(DP)>5' ${workdir}/02_vcf/${basename_array}.vcf.gz > ${workdir}/03_vcf/${basename_array}.vcf
+
+# bgzip
+bgzip ${workdir}/03_vcf/${basename_array}.vcf
+
+#tabix
+tabix ${workdir}/03_vcf/${basename_array}.vcf.gz
